@@ -1,5 +1,4 @@
-const itemFilterJson = require('./common/filters/totem-item.json')
-const avatarFilterJson = require('./common/filters/totem-avatar.json')
+const totemCommonFiles = require('totem-common-files')
 
 module.exports = class DNAParser {
   constructor (json, binary) {
@@ -67,10 +66,10 @@ module.exports = class DNAParser {
         json = avatarFilterJson
         break;
       case 'gem':
-        json = itemFilterJson
+        json = totemCommonFiles.itemFilterJson
         break;
       default:
-        json = itemFilterJson
+        json = totemCommonFiles.itemFilterJson
         break;
     }
 

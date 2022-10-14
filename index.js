@@ -63,7 +63,7 @@ module.exports = class DNAParser {
     let json
     switch (type) {
       case 'avatar':
-        json = avatarFilterJson
+        json = totemCommonFiles.avatarFilterJson
         break;
       case 'gem':
         json = totemCommonFiles.itemFilterJson

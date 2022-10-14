@@ -24,7 +24,7 @@ module.exports = class DNAParser {
     switch (type){
       case 'map':
         const idx = parseInt(partBin, 2);
-        result = item.values[idx]?.key
+        result = item && item.values[idx] ? item.values[idx].key : null
         break;
       case 'color':
         const array = sep(partBin, partBin.length / 4).map(bin => parseInt(bin, 2))
@@ -33,6 +33,9 @@ module.exports = class DNAParser {
         result = partBin.includes('undefined') ? '#FFD011' : rgb;
         break;
       case 'bool':
+        result = parseInt(partBin, 2);
+        break;
+      case 'int':
         result = parseInt(partBin, 2);
         break;
       case 'float': // FOR CHECK!!!
@@ -50,7 +53,7 @@ module.exports = class DNAParser {
       case 'range': 
         const id = parseInt(partBin, 2);
         const foundedItem = item.values.find((i) => i.value[0] <= id && i.value[1] >= id)
-        result = foundedItem?.key
+        result = foundedItem ? foundedItem.key : null
         break;
     }
 

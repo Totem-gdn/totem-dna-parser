@@ -13,7 +13,7 @@
     "npm": ">=7.0.0"
   },
   "dependencies": {
-    "common": "git+https://github.com/Totem-gdn/totem-common-files"
+    "totem-common-files": "git+https://github.com/Totem-gdn/totem-common-files"
   },
   "repository": {
     "type": "git",

@@ -16,6 +16,12 @@ const json = new dnaParser().getDefaultFilter(JSON_TYPE)
 - item
 - gem
 
+# Get all possible properties for JSON
+
+const parser = new dnaParser(JSON, BINARY_DATA)
+
+const properties = parser.getFilterPropertiesList()
+
 # Get field
 
 const parser = new dnaParser(JSON, BINARY_DATA)

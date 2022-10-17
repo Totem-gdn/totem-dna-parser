@@ -75,4 +75,10 @@ module.exports = class DNAParser {
 
     return json
   }
+
+  getFilterPropertiesList () {
+    return this.json.map((j) => {
+      return j.id
+    })
+  }
 }

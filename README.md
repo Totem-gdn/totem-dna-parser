@@ -27,3 +27,7 @@ const properties = parser.getFilterPropertiesList()
 const parser = new dnaParser(JSON, BINARY_DATA)
 
 const result = parser.getField(ID)
+
+# Get Item Rarity
+
+const rarity = new dnaParser().getItemRarity(ITEM_ID)

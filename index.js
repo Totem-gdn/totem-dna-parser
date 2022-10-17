@@ -81,4 +81,8 @@ module.exports = class DNAParser {
       return j.id
     })
   }
+
+  getItemRarity (id) {
+    return id % 100
+  }
 }

@@ -11,7 +11,9 @@ npm install --save git+https://github.com/Totem-gdn/totem-dna-parser
 const { DNAParser } = require('totem-dna-parser')
 
 const defaultAvatarJson = DNAParser.defaultAvatarJson
+
 const defaultGemJson = DNAParser.defaultGemJson
+
 const defaultItemJson = DNAParser.defaultItemJson
 
 # Get all possible properties for JSON

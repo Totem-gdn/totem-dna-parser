@@ -1,4 +1,5 @@
 const totemCommonFiles = require('totem-common-files')
+const Web3 = require('web3');
 
 module.exports = class DNAParser {
   constructor (json, binary) {
@@ -71,5 +72,21 @@ module.exports = class DNAParser {
 
   getItemRarity (id) {
     return id % 100
+  }
+}
+
+module.exports = class ContractHandler {
+  constructor (nodeUrl, contract) {
+    // this.nodeUrl = nodeUrl
+    this.contract = contract
+    this.web3 = new Web3(new Web3.providers.HttpProvider(nodeUrl));
+  }
+
+  async getDNA () {
+    const contract = new this.web3.eth.Contract(totemCommonFiles.assets_abi, this.contract)
+
+    const tokenURI = await contract.methods.tokenURI(id).call()
+
+    return tokenURI
   }
 }

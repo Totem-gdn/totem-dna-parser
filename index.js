@@ -4,7 +4,7 @@ const Web3 = require('web3');
 class DNAParser {
   constructor (json, dna) {
     this.json = json
-    this.binary = this._parseHexString(dna)
+    this.binary = dna ? this._parseHexString(dna) : ''
   }
 
   static defaultAvatarJson = totemCommonFiles.avatarFilterJson

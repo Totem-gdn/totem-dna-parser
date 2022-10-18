@@ -1,10 +1,10 @@
 const totemCommonFiles = require('totem-common-files')
 const Web3 = require('web3');
 
-module.exports = class DNAParser {
-  constructor (json, binary) {
+class DNAParser {
+  constructor (json, dna) {
     this.json = json
-    this.binary = binary
+    this.binary = this._parseHexString(dna)
   }
 
   static defaultAvatarJson = totemCommonFiles.avatarFilterJson
@@ -73,20 +73,58 @@ module.exports = class DNAParser {
   getItemRarity (id) {
     return id % 100
   }
+
+  _parseHexString (str) {
+    const lookup = {
+      '0': '0000',
+      '1': '0001',
+      '2': '0010',
+      '3': '0011',
+      '4': '0100',
+      '5': '0101',
+      '6': '0110',
+      '7': '0111',
+      '8': '1000',
+      '9': '1001',
+      'a': '1010',
+      'b': '1011',
+      'c': '1100',
+      'd': '1101',
+      'e': '1110',
+      'f': '1111',
+      'A': '1010',
+      'B': '1011',
+      'C': '1100',
+      'D': '1101',
+      'E': '1110',
+      'F': '1111'
+    };
+    let ret = '';
+    for (let i = 0, len = str.length; i < len; i++) {
+      if (lookup[str[i]]) {
+        ret += ((ret.length === 0 && lookup[str[i]] === '0000') ? '' : lookup[str[i]]);
+      }
+    }
+    return ret;
+  }
 }
 
-module.exports = class ContractHandler {
+class ContractHandler {
   constructor (nodeUrl, contract) {
-    // this.nodeUrl = nodeUrl
     this.contract = contract
     this.web3 = new Web3(new Web3.providers.HttpProvider(nodeUrl));
   }
 
-  async getDNA () {
+  async getDNA (id) {
     const contract = new this.web3.eth.Contract(totemCommonFiles.assets_abi, this.contract)
 
     const tokenURI = await contract.methods.tokenURI(id).call()
 
     return tokenURI
   }
+}
+
+module.exports = {
+  DNAParser,
+  ContractHandler
 }

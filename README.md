@@ -4,30 +4,26 @@ Node module for parsing DNA of Totem Assets
 
 # Import
 
-const dnaParser = require('dna-parser')
+const DNAParser = require('dna-parser')
 
 # Get Default JSON
 
-const json = new dnaParser().getDefaultFilter(JSON_TYPE)
-
-# JSON TYPES
-
-- avatar
-- item
-- gem
+const defaultAvatarJson = DNAParser.defaultAvatarJson
+const defaultGemJson = DNAParser.defaultGemJson
+const defaultItemJson = DNAParser.defaultItemJson
 
 # Get all possible properties for JSON
 
-const parser = new dnaParser(JSON, BINARY_DATA)
+const parser = new DNAParser(JSON, BINARY_DATA)
 
 const properties = parser.getFilterPropertiesList()
 
 # Get field
 
-const parser = new dnaParser(JSON, BINARY_DATA)
+const parser = new DNAParser(JSON, BINARY_DATA)
 
 const result = parser.getField(ID)
 
 # Get Item Rarity
 
-const rarity = new dnaParser().getItemRarity(ITEM_ID)
+const rarity = new DNAParser().getItemRarity(ITEM_ID)

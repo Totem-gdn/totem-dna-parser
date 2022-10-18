@@ -6,6 +6,10 @@ module.exports = class DNAParser {
     this.binary = binary
   }
 
+  static defaultAvatarJson = totemCommonFiles.avatarFilterJson
+  static defaultGemJson = totemCommonFiles.itemFilterJson
+  static defaultItemJson = totemCommonFiles.itemFilterJson
+
   getField(key) {
     const item = this.json.find((i) => i.id === key)
 
@@ -57,23 +61,6 @@ module.exports = class DNAParser {
     }
 
     return result
-  }
-
-  getDefaultFilter(type) {
-    let json
-    switch (type) {
-      case 'avatar':
-        json = totemCommonFiles.avatarFilterJson
-        break;
-      case 'gem':
-        json = totemCommonFiles.itemFilterJson
-        break;
-      default:
-        json = totemCommonFiles.itemFilterJson
-        break;
-    }
-
-    return json
   }
 
   getFilterPropertiesList () {

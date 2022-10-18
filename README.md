@@ -2,6 +2,10 @@
 
 Node module for parsing DNA of Totem Assets
 
+# Installation
+
+npm install --save git+https://github.com/Totem-gdn/totem-dna-parser
+
 # Get Default JSON
 
 const { DNAParser } = require('totem-dna-parser')

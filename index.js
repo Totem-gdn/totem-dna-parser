@@ -31,7 +31,7 @@ class DNAParser {
         result = item && item.values[idx] ? item.values[idx].key : null
         break;
       case 'color':
-        const array = sep(partBin, partBin.length / 4).map(bin => parseInt(bin, 2))
+        const array = sep(partBin, partBin.length / 8).map(bin => parseInt(bin, 2))
         const color = array.join(',')
         const rgb = array.length === 3 ? `rgb(${color})` : `rgba(${color})`
         result = partBin.includes('undefined') ? '#FFD011' : rgb;

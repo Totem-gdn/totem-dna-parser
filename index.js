@@ -37,7 +37,8 @@ class DNAParser {
         result = partBin.includes('undefined') ? '#FFD011' : rgb;
         break;
       case 'bool':
-        result = parseInt(partBin, 2);
+        const bool = parseInt(partBin, 2);
+        result = item && item.values && item.values.length ? item.values[bool] : bool
         break;
       case 'int':
         result = parseInt(partBin, 2);

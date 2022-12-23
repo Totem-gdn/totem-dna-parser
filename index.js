@@ -5,6 +5,15 @@ class DNAParser {
   constructor (json, dna) {
     this.json = json
     this.binary = dna ? this._parseHexString(dna) : ''
+
+    this.types = {
+      map: 'Map',
+      color: 'Color',
+      bool: 'Bool',
+      int: 'Int',
+      float: 'Float',
+      range: 'Range'
+    }
   }
 
   static defaultAvatarJson = totemCommonFiles.avatarFilterJson
@@ -69,6 +78,16 @@ class DNAParser {
     return this.json.map((j) => {
       return j.id
     })
+  }
+
+  getFieldType (id) {
+    const field = this.json.find((j) => j.id === id) 
+
+    if (field) {
+      return this.types[field.type.toLowerCase()]
+    } else {
+      return null
+    }
   }
 
   getItemRarity (id) {

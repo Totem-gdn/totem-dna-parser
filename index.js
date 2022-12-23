@@ -3,7 +3,15 @@ const Web3 = require('web3');
 
 class DNAParser {
   constructor (json, dna) {
-    this.json = json
+    if (typeof json === 'object') {
+      this.json = json
+    } else {
+      try {
+        this.json = JSON.parse(json)
+      } catch (e) {
+        throw 'Invalid JSON'
+      }
+    }
     this.binary = dna ? this._parseHexString(dna) : ''
 
     this.types = {

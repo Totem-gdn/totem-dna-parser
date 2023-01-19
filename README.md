@@ -45,3 +45,4 @@ const { ContractHandler } = require('totem-dna-parser')
 const contractHandler = new ContractHandler(url, contract)
 
 const DNA = await contractHandler.getDNA(id)
+.

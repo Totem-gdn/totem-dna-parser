@@ -1,6 +1,11 @@
 const totemCommonFiles = require('totem-common-files')
 const Web3 = require('web3');
 
+const Registers = {
+	HIGH: 'high',
+	LOW: 'low'
+}
+
 class DNAParser {
   constructor (json, dna) {
     if (typeof json === 'object') {
@@ -82,6 +87,29 @@ class DNAParser {
     return result
   }
 
+  getExponentialValue (index, register) {
+    const start = index * 32;
+    const end = start + 32
+
+    const partBin = this.binary.slice(start, end);
+
+    const high = partBin.slice(0, 16)
+    const low = partBin.slice(16, partBin.length)
+
+    switch (register) {
+      case Registers.HIGH:
+        return parseInt(high, 2)
+      case Registers.LOW:
+        return parseInt(low, 2)
+      default: 
+        throw new Error('Register can be HIGH or LOW')
+    }
+  }
+
+  getExponentialValueProbability (value) {
+    return 1 - Math.exp(-value / 7057);
+  }
+
   getFilterPropertiesList () {
     return this.json.map((j) => {
       return j.id
@@ -141,5 +169,6 @@ class ContractHandler {
 
 module.exports = {
   DNAParser,
-  ContractHandler
+  ContractHandler,
+  Registers
 }
